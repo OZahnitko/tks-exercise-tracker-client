@@ -7,3 +7,9 @@ test("renders learn react link", () => {
   const linkElement = screen.getByText(/App/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+test("renders hit", () => {
+  render(<App />);
+  const other = screen.getByText(/Cache HIT!!!!!/i);
+  expect(other).toBeInTheDocument();
+});
