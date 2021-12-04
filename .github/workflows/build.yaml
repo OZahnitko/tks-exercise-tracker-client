@@ -1,0 +1,24 @@
+name: TKS Exercise Tracker
+on:
+  push:
+    branches:
+      - main
+      - development
+jobs:
+  test:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        id: test
+        run: |
+          echo Testing
+  build:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building
+        id: build
+        run: |
+          echo "Testing OK... BUILDING>>>"
