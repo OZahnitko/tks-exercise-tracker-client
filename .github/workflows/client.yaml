@@ -9,11 +9,14 @@ jobs:
     name: Testing
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Client Test
         id: test
+        uses: actions/checkout@v2
         run: |
-          echo Testing
+          npm install
+          npm run test
   build:
+    name: Building
     needs: test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -21,4 +24,4 @@ jobs:
       - name: Building
         id: build
         run: |
-          echo "Testing OK... BUILDING>>>"
+          echo "Testing OK... BUILDING > > >"
